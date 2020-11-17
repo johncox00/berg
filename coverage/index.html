@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-11-17T15:14:21-07:00">2020-11-17T15:14:21-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-11-17T15:54:39-07:00">2020-11-17T15:54:39-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  98.84%
+  98.85%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.5
+         1.51
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>173</b> relevant lines,
-    <span class="green"><b>171</b> lines covered</span> and
+    <b>174</b> relevant lines,
+    <span class="green"><b>172</b> lines covered</span> and
     <span class="red"><b>2</b> lines missed. </span>
     (<span class="green">
-  98.84%
+  98.85%
 </span>
 )
   </div>
@@ -370,11 +370,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#b1e110695e5a004a787dca80b450c3b833948ad3" class="src_link" title="spec/models/upload_spec.rb">spec/models/upload_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">32</td>
-            <td class="cell--number">20</td>
-            <td class="cell--number">20</td>
+            <td class="cell--number">33</td>
+            <td class="cell--number">21</td>
+            <td class="cell--number">21</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.05</td>
+            <td class="cell--number">1.10</td>
             
           </tr>
         
@@ -5140,8 +5140,8 @@
     
 
     <div class="t-line-summary">
-      <b>20</b> relevant lines.
-      <span class="green"><b>20</b> lines covered</span> and
+      <b>21</b> relevant lines.
+      <span class="green"><b>21</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -5252,13 +5252,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="2" data-linenumber="10">
+            <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">    upload = create(:upload, csv: import_csv)</code>
+            <code class="ruby">    allow(UploadWorker).to receive(:perform_async){true}</code>
           </li>
         </div>
       
@@ -5269,7 +5269,7 @@
 
             
 
-            <code class="ruby">    expect(upload.ready).to be_falsey</code>
+            <code class="ruby">    upload = create(:upload, csv: import_csv)</code>
           </li>
         </div>
       
@@ -5280,7 +5280,7 @@
 
             
 
-            <code class="ruby">    expect{</code>
+            <code class="ruby">    expect(upload.ready).to be_falsey</code>
           </li>
         </div>
       
@@ -5291,12 +5291,23 @@
 
             
 
+            <code class="ruby">    expect{</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="14">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">      upload.parse</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
+          <li class="never" data-hits="" data-linenumber="15">
             
             
 
@@ -5307,7 +5318,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="15">
+          <li class="covered" data-hits="1" data-linenumber="16">
             <span class="hits">1</span>
             
 
@@ -5318,7 +5329,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="16">
+          <li class="covered" data-hits="1" data-linenumber="17">
             <span class="hits">1</span>
             
 
@@ -5329,7 +5340,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="17">
+          <li class="covered" data-hits="1" data-linenumber="18">
             <span class="hits">1</span>
             
 
@@ -5340,7 +5351,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="18">
+          <li class="never" data-hits="" data-linenumber="19">
             
             
 
@@ -5351,24 +5362,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="19">
+          <li class="never" data-hits="" data-linenumber="20">
             
             
 
             
 
             <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="20">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">  it &#39;does not call the asynchronous parsing when not necessary&#39; do</code>
           </li>
         </div>
       
@@ -5379,7 +5379,7 @@
 
             
 
-            <code class="ruby">    expect(UploadWorker).to_not receive(:perform_async)</code>
+            <code class="ruby">  it &#39;does not call the asynchronous parsing when not necessary&#39; do</code>
           </li>
         </div>
       
@@ -5390,7 +5390,7 @@
 
             
 
-            <code class="ruby">    u = build(:upload)</code>
+            <code class="ruby">    expect(UploadWorker).to_not receive(:perform_async)</code>
           </li>
         </div>
       
@@ -5401,7 +5401,7 @@
 
             
 
-            <code class="ruby">    u.do_not_parse = true</code>
+            <code class="ruby">    u = build(:upload)</code>
           </li>
         </div>
       
@@ -5412,18 +5412,18 @@
 
             
 
-            <code class="ruby">    u.save</code>
+            <code class="ruby">    u.do_not_parse = true</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="25">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="25">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  end</code>
+            
+
+            <code class="ruby">    u.save</code>
           </li>
         </div>
       
@@ -5434,18 +5434,18 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="27">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="27">
+            
             
 
             
 
-            <code class="ruby">  it &#39;does call the asyn parsing when needed&#39; do</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -5456,7 +5456,7 @@
 
             
 
-            <code class="ruby">    expect(UploadWorker).to receive(:perform_async)</code>
+            <code class="ruby">  it &#39;does call the asyn parsing when needed&#39; do</code>
           </li>
         </div>
       
@@ -5467,7 +5467,7 @@
 
             
 
-            <code class="ruby">    u = build(:upload)</code>
+            <code class="ruby">    expect(UploadWorker).to receive(:perform_async)</code>
           </li>
         </div>
       
@@ -5478,12 +5478,23 @@
 
             
 
+            <code class="ruby">    u = build(:upload)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="31">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">    u.save</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="31">
+          <li class="never" data-hits="" data-linenumber="32">
             
             
 
@@ -5494,7 +5505,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="32">
+          <li class="never" data-hits="" data-linenumber="33">
             
             
 
@@ -6407,7 +6418,7 @@
 
             
 
-            <code class="ruby">    u = create(:upload)</code>
+            <code class="ruby">    u = create(:upload, do_not_parse: true)</code>
           </li>
         </div>
       

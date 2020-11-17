@@ -2,6 +2,10 @@ require 'rails_helper'
 
 RSpec.describe UploadsController, type: :controller do
   render_views
+  before do
+    allow(UploadWorker).to receive(:perform_async){true}
+  end
+  
   it 'allows the csv file to be uploaded' do
 
     csv_data = "data:text/csv;base64,Zmlyc3QsbGFzdCxlbWFpbCxwaG9uZQpKb2UsQmxvdyxqb2VAYmxvdy5jb20sODE3LTI4Mi01NjYwCkphbmUsRG9lLGphbmVAZG9lLmNvbSw0NzktNDI2LTM5NTkK"

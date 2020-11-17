@@ -7,6 +7,7 @@ RSpec.describe Upload, type: :model do
   let(:import_csv){'data:text/csv;base64,Zmlyc3QsbGFzdCxlbWFpbCxwaG9uZQpKb2UsQmxvdyxqb2VAYmxvdy5jb20sODE3LTI4Mi01NjYwCixEb2UsamFuZSw0MjYtMzk1OQo='}
 
   it 'parses the csv' do
+    allow(UploadWorker).to receive(:perform_async){true}
     upload = create(:upload, csv: import_csv)
     expect(upload.ready).to be_falsey
     expect{
