@@ -10,8 +10,14 @@ module Types
       argument :per, Int, required: false
     end
 
-    def users(page=1, per=10)
-      User.all.page(page).per(per)
+    def users(page:1, per:10)
+      users = User.all.page(page).per(per)
+      {
+        total_count: users.total_count,
+        total_pages: users.total_pages,
+        current_page: page,
+        results: users
+      }
     end
   end
 end

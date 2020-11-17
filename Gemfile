@@ -64,3 +64,4 @@ gem 'sidekiq'
 gem 'graphql'
 gem 'graphiql-rails', group: :development
 gem 'kaminari'
+gem 'simplecov', require: false, group: :test
