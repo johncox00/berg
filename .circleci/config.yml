@@ -28,4 +28,4 @@ jobs:
       - run: chmod +x ./cc-test-reporter
       - run: ./cc-test-reporter before-build
       - run: ruby -v
-      - run: bundle exec rspec; ./cc-test-reporter format-coverage -t simplecov -o tmp/codeclimate.backend.json coverage/.resultset.json --exit-code $?
+      - run: bundle exec rspec; ./cc-test-reporter after-build -t simplecov --exit-code $?
