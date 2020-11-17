@@ -16,4 +16,17 @@ RSpec.describe Upload, type: :model do
     expect(upload.errs[0][:errors].count).to eq(3)
     expect(upload.ready).to be_truthy
   end
+
+  it 'does not call the asynchronous parsing when not necessary' do
+    expect(UploadWorker).to_not receive(:perform_async)
+    u = build(:upload)
+    u.do_not_parse = true
+    u.save
+  end
+
+  it 'does call the asyn parsing when needed' do
+    expect(UploadWorker).to receive(:perform_async)
+    u = build(:upload)
+    u.save
+  end
 end

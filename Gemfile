@@ -60,3 +60,7 @@ gem 'phonelib'
 gem 'rack-cors'
 gem 'carrierwave', '~> 2.0'
 gem 'carrierwave-base64'
+gem 'sidekiq'
+gem 'graphql'
+gem 'graphiql-rails', group: :development
+gem 'kaminari'

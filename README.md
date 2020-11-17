@@ -24,3 +24,5 @@ Things you may want to cover:
 * ...
 
 https://onlinecsvtools.com/convert-csv-to-base64
+
+Assume no fields need to be unique (usually email would be).

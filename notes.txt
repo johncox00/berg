@@ -18,6 +18,6 @@ x POST to upload csv with user data
   x rails g uploader Csv
   x mount_base64_uploader :csv, CsvUploader
   x parses csv
-- async csv processing
+x async csv processing
 - add graphql gem
 - create graphql endpoint for users
