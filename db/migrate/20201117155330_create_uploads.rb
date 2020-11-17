@@ -3,7 +3,7 @@ class CreateUploads < ActiveRecord::Migration[6.0]
     create_table :uploads do |t|
       t.string :csv
       t.boolean :ready, default: false
-      t.text :errors
+      t.text :errs
 
       t.timestamps
     end

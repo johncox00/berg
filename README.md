@@ -22,3 +22,5 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+https://onlinecsvtools.com/convert-csv-to-base64

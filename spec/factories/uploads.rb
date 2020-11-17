@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :upload do
-    csv { "MyString" }
+    csv { "some data" }
     ready { false }
-    errors { "MyText" }
+    errs { [] }
   end
 end
