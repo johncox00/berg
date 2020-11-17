@@ -1,0 +1,17 @@
+NOTES:
+x install rspec
+x install factorybot gem
+x rails g model User first:string last:string email:string phone:string
+x user factory
+x test validations
+  x phone number chars: ().-0123456789 str.delete('^0-9'), /[\(\)\,\.\d]/
+  x phone number length: 10 numbers
+  x number 0 and 3 cannot be 0
+  x first, last optional
+  x last can only be present if first is present
+  x valid email
+x save phone as (nnn) nnn-nnnn format
+- POST to upload csv with user data
+- async csv processing
+- add graphql gem
+- create graphql endpoint for users
