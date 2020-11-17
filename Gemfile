@@ -56,3 +56,5 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'email_validator'
 gem 'phonelib'
+gem 'rack-cors'
+gem 'carrierwave-base64'

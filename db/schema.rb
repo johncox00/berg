@@ -10,7 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_17_132356) do
+ActiveRecord::Schema.define(version: 2020_11_17_155330) do
+
+  create_table "uploads", force: :cascade do |t|
+    t.string "csv"
+    t.boolean "ready", default: false
+    t.text "errors"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first"

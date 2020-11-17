@@ -12,6 +12,11 @@ x test validations
   x valid email
 x save phone as (nnn) nnn-nnnn format
 - POST to upload csv with user data
+  x rack cors, gem 'rack-cors', https://github.com/cyu/rack-cors
+  x gem 'carrierwave-base64'
+  x rails g scaffold Upload csv:string ready:boolean errors:text
+  x rails g uploader Csv
+  x mount_base64_uploader :csv, CsvUploader
 - async csv processing
 - add graphql gem
 - create graphql endpoint for users
