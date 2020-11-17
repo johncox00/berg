@@ -19,5 +19,5 @@ x POST to upload csv with user data
   x mount_base64_uploader :csv, CsvUploader
   x parses csv
 x async csv processing
-- add graphql gem
-- create graphql endpoint for users
+x add graphql gem
+x create graphql endpoint for users
