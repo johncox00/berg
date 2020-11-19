@@ -27,7 +27,7 @@
         1,
         null,
         1,
-        null,
+        1,
         null,
         null,
         null,
@@ -388,6 +388,36 @@
         null,
         null
       ],
+      "/Users/johncox/projects/personal/berg/spec/jobs/upload_job_spec.rb": [
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/johncox/projects/personal/berg/app/jobs/upload_job.rb": [
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/johncox/projects/personal/berg/app/jobs/application_job.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       "/Users/johncox/projects/personal/berg/spec/models/upload_spec.rb": [
         1,
         null,
@@ -623,27 +653,6 @@
         null,
         null
       ],
-      "/Users/johncox/projects/personal/berg/spec/workers/upload_worker_spec.rb": [
-        1,
-        null,
-        1,
-        1,
-        1,
-        1,
-        1,
-        null,
-        null
-      ],
-      "/Users/johncox/projects/personal/berg/app/workers/UploadWorker.rb": [
-        1,
-        1,
-        null,
-        1,
-        1,
-        1,
-        null,
-        null
-      ],
       "/Users/johncox/projects/personal/berg/app/graphql/berg_schema.rb": [
         1,
         1,
@@ -738,6 +747,6 @@
         null
       ]
     },
-    "timestamp": 1605797140
+    "timestamp": 1605815200
   }
 }

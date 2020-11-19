@@ -7,7 +7,7 @@ RSpec.describe Upload, type: :model do
   let(:import_csv){'data:text/csv;base64,Rmlyc3QsbGFzdCxFTUFJTCxwaG9OZQpKb2UsQmxvdyxqb2VAYmxvdy5jb20sODE3LTI4Mi01NjYwCixEb2UsamFuZSw0MjYtMzk1OQo='}
 
   it 'parses the csv' do
-    allow(UploadWorker).to receive(:perform_async){true}
+    allow(UploadJob).to receive(:perform_later){true}
     upload = create(:upload, csv: import_csv)
     expect(upload.ready).to be_falsey
     expect{
@@ -19,14 +19,14 @@ RSpec.describe Upload, type: :model do
   end
 
   it 'does not call the asynchronous parsing when not necessary' do
-    expect(UploadWorker).to_not receive(:perform_async)
+    expect(UploadJob).to_not receive(:perform_later)
     u = build(:upload)
     u.do_not_parse = true
     u.save
   end
 
   it 'does call the asyn parsing when needed' do
-    expect(UploadWorker).to receive(:perform_async)
+    expect(UploadJob).to receive(:perform_later)
     u = build(:upload)
     u.save
   end

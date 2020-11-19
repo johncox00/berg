@@ -18,7 +18,7 @@ This is a naive API exercise that demonstrates a few concepts:
 
 ### CI
 
-I went ahead and set up Code Climate for code quality and CircleCI for automating tests. You'll see the badges/links to Code Climate at the top of the repo page.
+I went ahead and set up Code Climate for code quality and CircleCI for automating tests. You can find the Code Climate page [here](https://codeclimate.com/github/johncox00/berg). If you run tests locally, you can see the coverage report in `/coverage/index.html`.
 
 ### Running the App Using Docker && Docker Compose
 
@@ -60,10 +60,15 @@ Get the app set up:
 ```
 gem install bundler
 bundle
+yarn install --check-files
 rails db:migrate
 ```
 
-Start the Sidekiq worker(s) in a separate terminal window: `bundle exec sidekiq`
+Start the Sidekiq worker(s) in a separate terminal window:
+
+```
+bundle exec sidekiq
+```
 
 Run the tests:
 
@@ -167,6 +172,8 @@ Response:
 *Fetch Users*
 
 Retrieves a paginated list of users with metadata indicating where we are in pagination. Takes arguments for which page to retrieve and desired page size. Default page is 1 and default page size is 20.
+
+Worth noting: Attributes/fields that are specified as `snake_case` in code are required to be requested as and will return as `cammelCase`. For instance, the field `created_at` would be requested at `createdAt` and would be returned the same. (This was a new development)
 
 `POST /graphql`
 
