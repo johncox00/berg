@@ -1,0 +1,47 @@
+version: '2'
+
+services:
+  postgres:
+    image: 'postgres:11.10'
+    restart: always
+    ports:
+      - '5432:5432'
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+    env_file:
+      - '.env'
+  redis:
+    image: 'redis:4.0-alpine'
+    command: ["redis-server", "--bind", "redis", "--port", "6379"]
+    volumes:
+      - 'redis:/data'
+    ports:
+      - '6379:6379'
+
+  website:
+    depends_on:
+      - 'redis'
+      - 'postgres'
+    build: .
+    ports:
+      - '3000:3000'
+    volumes:
+      - website:/usr/src/app/public
+    env_file:
+      - '.env'
+    command: bash -c "bundle exec rails db:migrate && bundle exec rails server -b 0.0.0.0"
+
+  sidekiq:
+    depends_on:
+      - 'redis'
+    build: .
+    command: bundle exec sidekiq
+    volumes:
+      - website:/usr/src/app/public
+    env_file:
+      - '.env'
+
+volumes:
+  redis:
+  postgres:
+  website:

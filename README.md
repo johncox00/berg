@@ -16,7 +16,27 @@ This is a naive API exercise that demonstrates a few concepts:
 4. This API requires no authentication nor does it implement any kind of authorization.
 5. CSV files have headers.
 
-## Running the app...
+### Docker
+
+```
+cd ~/yourdir/berg # the directory the app was cloned into
+docker build -t berg .
+```
+
+Awesome! Now hop into the container and run the tests:
+
+```
+docker run -it berg rspec
+```
+
+Run the server:
+```
+docker run -it -p 3000:3000 berg rails s -b 0.0.0.0
+```
+
+Now you can start hitting the API at `http://localhost:3000`. Read on below for the specifics about the API and testing with Postman. When you're done, just `ctrl+c` in the terminal where you started the Docker container. If you're really into Docker, you could run it with the `-d` option to background it.
+
+## Running the App Locally
 
 - Ruby version 2.6.6
 - I used RVM, so if you're using it also, you'll get a new Gemset when you `cd` into the directory.
