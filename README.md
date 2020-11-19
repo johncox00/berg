@@ -16,6 +16,10 @@ This is a naive API exercise that demonstrates a few concepts:
 4. This API requires no authentication nor does it implement any kind of authorization.
 5. CSV files have headers.
 
+### CI
+
+I went ahead and set up Code Climate for code quality and CircleCI for automating tests. You'll see the badges/links to Code Climate at the top of the repo page.
+
 ### Running the App Using Docker && Docker Compose
 
 If you have Docker on your machine and don't want to worry with the particulars of any dependencies, you can run this app using `docker-compose`. In this scenario, you'll end up with containers running Redis, PostgreSQL, Sidekiq, and the Rails web server. If you'd rather run the app locally, skip to the next section.
