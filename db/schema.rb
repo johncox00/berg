@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_11_17_155330) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "uploads", force: :cascade do |t|
     t.string "csv"
     t.boolean "ready", default: false
