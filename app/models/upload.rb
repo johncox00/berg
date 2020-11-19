@@ -23,9 +23,24 @@ class Upload < ApplicationRecord
   end
 
   def process_row(row)
-    u = User.new(first: row['first'], last: row['last'], email: row['email'], phone: row['phone'])
+    headers = normalized_headers(row)
+    u = User.new(first: row[headers[:first]], last: row[headers[:last]], email: row[headers[:email]], phone: row[headers[:phone]])
     if !u.save
       self.errs << {line: row, errors: u.errors}
     end
+  end
+
+  def normalized_headers(row)
+    @normalized_headers ||= {
+      first: normalize_key('first', row),
+      last: normalize_key('last', row),
+      phone: normalize_key('phone', row),
+      email: normalize_key('email', row)
+    }
+  end
+
+  def normalize_key(key, row)
+    keys = row.to_h.keys
+    keys.select{|k| /#{key}/i.match(k)}[0]
   end
 end

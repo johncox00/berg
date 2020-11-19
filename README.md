@@ -14,7 +14,7 @@ This is a naive API exercise that demonstrates a few concepts:
 2. There was an implied requirement for `email` and `phone` to be required fields on `User`, so I did that.
 3. Since this is a JSON API, the file upload is handled by requiring the data to be Base64-encoded. Is this 100% necessary? No, but it doesn't add _too_ much overhead and it helps us down the road if we get into binary file uploads.
 4. This API requires no authentication nor does it implement any kind of authorization.
-5. CSV files have headers.
+5. CSV files have headers. Assumes headers to be 'first', 'last', 'email', 'phone', but allows for those headers to be any case (ex. 'first' or 'First' or 'FIRST').
 
 ### CI
 
