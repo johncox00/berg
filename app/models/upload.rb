@@ -10,7 +10,7 @@ class Upload < ApplicationRecord
   attr_accessor :do_not_parse
 
   def maybe_async_parse
-    UploadWorker.perform_async(self.id) unless self.do_not_parse
+    UploadJob.perform_later(self.id) unless self.do_not_parse
   end
 
   def parse

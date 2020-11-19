@@ -1,5 +1,5 @@
-class UploadWorker
-  include Sidekiq::Worker
+class UploadJob < ApplicationJob
+  queue_as :default
 
   def perform(id)
     upload = Upload.find(id)
