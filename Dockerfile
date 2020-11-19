@@ -3,9 +3,7 @@ FROM ruby:2.6
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 
-RUN apt-get update && apt-get -y install nodejs yarn redis-server
-
-RUN service redis-server start
+RUN apt-get update && apt-get -y install nodejs yarn
 
 RUN bundle config --global frozen 1
 
@@ -16,4 +14,3 @@ RUN bundle install
 COPY . .
 RUN yarn install --check-files
 RUN rails webpacker:install
-# RUN rails db:create db:migrate

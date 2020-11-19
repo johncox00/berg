@@ -16,45 +16,75 @@ This is a naive API exercise that demonstrates a few concepts:
 4. This API requires no authentication nor does it implement any kind of authorization.
 5. CSV files have headers.
 
-### Docker
+### CI
+
+I went ahead and set up Code Climate for code quality and CircleCI for automating tests. You'll see the badges/links to Code Climate at the top of the repo page.
+
+### Running the App Using Docker && Docker Compose
+
+If you have Docker on your machine and don't want to worry with the particulars of any dependencies, you can run this app using `docker-compose`. In this scenario, you'll end up with containers running Redis, PostgreSQL, Sidekiq, and the Rails web server. If you'd rather run the app locally, skip to the next section.
+
+First time through:
 
 ```
 cd ~/yourdir/berg # the directory the app was cloned into
-docker build -t berg .
+docker-compose up --build
 ```
 
-Awesome! Now hop into the container and run the tests:
+Time to grab a cup of coffee. The build will take a bit the first time through - particularly installing the `bundle` in the app container. (Don't worry, it's super fast to start after the first time.) Once it's up, you should be able to hit the API at `localhost:3000`. The server runs in `dev` mode for the sake of this exercise. Details on the API can be found below.
+
+After you're done playing with the app, you can `ctrl+c` to shut it down. Then the next time you want to start it up:
 
 ```
-docker run -it berg rspec
+docker-compose up
 ```
-
-Run the server:
-```
-docker run -it -p 3000:3000 berg rails s -b 0.0.0.0
-```
-
-Now you can start hitting the API at `http://localhost:3000`. Read on below for the specifics about the API and testing with Postman. When you're done, just `ctrl+c` in the terminal where you started the Docker container. If you're really into Docker, you could run it with the `-d` option to background it.
 
 ## Running the App Locally
 
 - Ruby version 2.6.6
 - I used RVM, so if you're using it also, you'll get a new Gemset when you `cd` into the directory.
 - Sidekiq is used for asynchronous processing. You'll need Redis to back it.
+- PostgreSQL database. I started with SQLite for simplicity, but introduced Postgres in the process of spinning up the Docker implementation.
+
+Assuming you already have Postgres running, set up the database:
 
 ```
+sudo -u postgres psql
+postgres=# create database berg_db;
+postgres=# create user the_berg with encrypted password 'berg_pw';
+postgres=# grant all privileges on database berg_db to the_berg;
+```
+
+Get the app set up:
+
+```
+gem install bundler
 bundle
 rails db:migrate
+```
+
+Start the Sidekiq worker(s) in a separate terminal window: `bundle exec sidekiq`
+
+Run the tests:
+
+```
+rspec
+```
+
+Run the web server:
+
+```
 rails s
 ```
 
-Start the sidekiq worker(s) in a separate terminal window: `bundle exec sidekiq`
 
 ## Sample Requests
 
+If you'd like to try the API out using Postman, [here's a collection](https://www.getpostman.com/collections/4dfb6f707b2d46d6d1e1) to get you started.
+
 _Pro tip:_ Use [this](https://onlinecsvtools.com/convert-csv-to-base64) tool to Base64 encode your CSV. You'll then need to prepend `data:text/csv;base64,`.
 
-### Uploading a CSV File
+*Uploading a CSV File*
 
 `POST /uploads`
 
@@ -81,7 +111,7 @@ Response:
     "url": "http://localhost:3000/uploads/4.json"
 }
 ```
-### Fetch an Upload
+*Fetch an Upload*
 
 Allows us to see if it's done parsing and any errors that happened in parsing.
 
@@ -134,7 +164,7 @@ Response:
 }
 ```
 
-### Fetch Users
+*Fetch Users*
 
 Retrieves a paginated list of users with metadata indicating where we are in pagination. Takes arguments for which page to retrieve and desired page size. Default page is 1 and default page size is 20.
 
